@@ -1,0 +1,11 @@
+# Compiled files and dependencies
+node_modules/
+
+# Hidden files, caches, and misc.
+.DS_Store
+cache
+yarn-error.log
+
+# ide
+.vscode
+.idea

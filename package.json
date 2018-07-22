@@ -31,7 +31,10 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
     "path": "^0.12.7",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0"
   },
@@ -41,10 +44,13 @@
     "lodash.debounce": "^4.0.8",
     "react-mentions": "^2.0.1",
     "react-modal": "^3.3.2",
-    "react-tiny-spin": "^0.6.5"
+    "react-tiny-spin": "^0.6.5",
+    "url": "^0.11.0"
   },
   "peerDependencies": {
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "vanilla-react-utils": "git+https://github.com/TomodomoCo/vanilla-react-utils"
   }
 }

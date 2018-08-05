@@ -16,10 +16,9 @@ const config = {
     libraryTarget: 'umd',
   },
   externals: {
-    // react: 'commonjs react',
-    // 'react-dom': 'commonjs react-dom',
     react: 'react',
     'react-dom': 'react-dom',
+    'vanilla-react-utils': 'vanilla-react-utils',
   },
   resolve: {
     modules: ['node_modules'],

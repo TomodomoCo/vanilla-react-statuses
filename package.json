@@ -51,6 +51,6 @@
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
-    "vanilla-react-utils": "*"
+    "@tomodomo/vanilla-react-utils": "*"
   }
 }

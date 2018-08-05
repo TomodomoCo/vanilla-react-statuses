@@ -18,7 +18,7 @@ const config = {
   externals: {
     react: 'react',
     'react-dom': 'react-dom',
-    'vanilla-react-utils': 'vanilla-react-utils',
+    '@tomodomo/vanilla-react-utils': '@tomodomo/vanilla-react-utils',
   },
   resolve: {
     modules: ['node_modules'],

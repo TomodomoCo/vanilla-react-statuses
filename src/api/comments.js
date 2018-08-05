@@ -1,4 +1,4 @@
-import { fetchJson, METHODS, postData } from 'vanilla-react-utils'
+import { fetchJson, METHODS, postData } from '@tomodomo/vanilla-react-utils'
 
 export function getCommentsByActivityId(id, options) {
   return fetchJson(`/api/v2/comments?discussionID=${id}&expand=insertUser&limit=9999`, options)

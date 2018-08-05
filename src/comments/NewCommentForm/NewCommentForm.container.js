@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debounce from 'lodash.debounce'
-import { getProfile, tagSearch } from 'vanilla-react-utils'
+import { getProfile, tagSearch } from '@tomodomo/vanilla-react-utils'
 import { postComment } from '../../api/comments'
 import NewCommentForm from './NewCommentForm'
 

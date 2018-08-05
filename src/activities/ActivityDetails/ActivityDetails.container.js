@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Spinner from 'react-tiny-spin'
-import { getProfile, getCategories } from 'vanilla-react-utils'
+import { getProfile, getCategories } from '@tomodomo/vanilla-react-utils'
 import {
   getActivityById,
   getModAccessOnActivities,

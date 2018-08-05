@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
-import { stripHtmlTags, getUserUrl } from 'vanilla-react-utils'
+import { stripHtmlTags, getUserUrl } from '@tomodomo/vanilla-react-utils'
 import Comments from '../../comments/CommentsExpandableSummary'
 
 const { LIMIT_ACTIVITY_COMMENTS } = window.tomodomo.config

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { getProfile } from 'vanilla-react-utils'
+import { getProfile } from '@tomodomo/vanilla-react-utils'
 import { deleteCommentById, getCommentsByActivityId } from '../../api/comments'
 import { getModAccessOnActivities } from '../../api/discussions'
 import CommentsList from './CommentsList'

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { stripHtmlTags, getUserUrl } from 'vanilla-react-utils'
+import { stripHtmlTags, getUserUrl } from '@tomodomo/vanilla-react-utils'
 
 export default class SimpleComment extends PureComponent {
   static propTypes = {

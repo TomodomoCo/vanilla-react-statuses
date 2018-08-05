@@ -1,5 +1,5 @@
 {
-  "name": "vanilla-react-statuses",
+  "name": "@tomodomo/vanilla-react-statuses",
   "version": "1.0.0",
   "description": "The 'statuses' functionality of the Tomodomo community apps",
   "main": "dist/index.js",

@@ -33,22 +33,22 @@ export default class ActivityList extends PureComponent {
   render() {
     const { discussions } = this.props
     if (!discussions.length) {
-      return <div className="empty-list-message">Nothing new</div>
+      return <div className="td-status__empty">Nothing new</div>
     }
     return (
-      <ul className="status__list">
+      <ul className="td-status__list">
         {discussions.map(discussion => (
-          <li className="sblist__item" key={discussion.discussionID}>
-            <div className="sblist__author">
+          <li className="td-status__item" key={discussion.discussionID}>
+            <div className="td-status__author">
               <img
                 src={discussion.insertUser.photoUrl}
-                className="ProfilePhoto sblist__photo"
+                className="ProfilePhoto td-status__photo"
                 alt={discussion.insertUser.name}
               />
               <a href={getUserUrl(discussion.insertUser.name)}>
                 {discussion.insertUser.name}
               </a>
-              &nbsp;<span className="status-header__separator">·</span>&nbsp;
+              &nbsp;<span className="td-status__separator">·</span>&nbsp;
               <a
                 href={discussion.url}
                 onClick={(ev) => {
@@ -59,8 +59,8 @@ export default class ActivityList extends PureComponent {
                 <time>{distanceInWordsToNow(discussion.dateInserted)} ago</time>
               </a>
             </div>
-            <div className="status__content">
-              <div className="status__text">
+            <div className="td-status__content">
+              <div className="td-status__text">
                 {stripHtmlTags(discussion.body)}
               </div>
               <Comments

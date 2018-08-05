@@ -86,21 +86,23 @@ export default class ActivityDetails extends Component {
     const { onDeleteActivity, onChangeCategory, categories, isLegacy } = this.props
     const userName = this.props.insertUser.name
     return (
-      <div className="status-details">
-        <div className="activity__header" data-discussion-id={this.props.discussionID}>
-          <div className="activity__author">
+      <div className="td-status__details">
+        <div className="td-status__header" data-discussion-id={this.props.discussionID}>
+          <div className="td-status__author">
             <img
               src={this.props.insertUser.photoUrl}
-              className="ProfilePhoto status__photo"
+              className="ProfilePhoto td-status__photo"
               alt={userName}
             />
             <a href={getUserUrl(userName)}>{userName}</a>&nbsp;
-            <span className="status-header__separator">·</span>&nbsp;
+            <span className="td-status__separator">·</span>&nbsp;
             <time>{distanceInWordsToNow(this.props.dateInserted)} ago</time>
           </div>
-          <div className="status__text">{stripHtmlTags(this.props.body)}</div>
+          <div className="td-status__content">
+            <div className="td-status__text">{stripHtmlTags(this.props.body)}</div>
+          </div>
           {(onChangeCategory || onDeleteActivity) && (
-            <div className="status__actions activity__actions">
+            <div className="td-status__actions">
               {onChangeCategory &&
                 categories && (
                   <select
@@ -116,7 +118,7 @@ export default class ActivityDetails extends Component {
                   </select>
                 )}
               {onDeleteActivity && (
-                <button onClick={this.onDeleteActivity} className="button">
+                <button onClick={this.onDeleteActivity} className="td-status__delete">
                   &times;
                 </button>
               )}

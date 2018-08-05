@@ -14,9 +14,9 @@ export default class ActivityModal extends PureComponent {
     return (
       <Modal
         isOpen={!!discussionID}
-        className="td-activity-modal"
-        overlayClassName="td-activity-modal__overlay"
-        contentLabel="Activity Details"
+        className="td-status__modal"
+        overlayClassName="td-status__modal__overlay"
+        contentLabel="Status Details"
         onRequestClose={onCloseDiscussion}
         ariaHideApp={false}
       >

@@ -32,11 +32,11 @@ export default class NewCommentForm extends Component {
     const { userProfile } = this.props
     const charsCountdown = ACTIVITY_COMMENT_MAXLEN - this.state.text.length
     return (
-      <div className="FormWrapper FormWrapper-Condensed">
+      <div className="FormWrapper FormWrapper-Condensed td-status-form td-status-form--comment">
         {userProfile && (
-          <img src={userProfile.photoUrl} alt={userProfile.name} className="ProfilePhoto" />
+          <img src={userProfile.photoUrl} alt={userProfile.name} className="ProfilePhoto td-status__photo" />
         )}
-        <form className="Comment activity-form" id="tem_comment" onSubmit={this.onSubmit}>
+        <form className="Comment td-status-form__form" onSubmit={this.onSubmit}>
           <MentionsInput
             className="mentions"
             wrap={1}
@@ -69,7 +69,7 @@ export default class NewCommentForm extends Component {
             <input
               type="submit"
               value="Add Reply"
-              className="Button Primary"
+              className="Button Primary td-status-form__submit"
               disabled={!this.state.text}
             />
           </div>

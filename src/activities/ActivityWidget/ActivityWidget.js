@@ -47,7 +47,7 @@ export default class ActivityWidget extends Component {
   render() {
     const { discussionID } = this.state
     return (
-      <div className="activity-widget">
+      <div className="td-status__widget">
         <NewActivityForm onPostActivity={this.onPostActivity} hasAvatar />
         <ActivityListContainer
           timestamp={this.state.changedAt.getTime()}
@@ -57,7 +57,7 @@ export default class ActivityWidget extends Component {
           {ActivityList}
         </ActivityListContainer>
         <ActivityDetails discussionID={discussionID} onCloseDiscussion={this.onCloseDiscussion} />
-        <a href={ACTIVITY_PATH} className="td-button td-button--outline td-button--full-width td-button--small u-mt--2">View more</a>
+        <a href={ACTIVITY_PATH} className="td-status__more">View more</a>
       </div>
     )
   }

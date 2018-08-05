@@ -32,11 +32,11 @@ export default class NewActivityForm extends Component {
     const { userProfile, tagSearch } = this.props
     const charsCountdown = ACTIVITY_POST_MAXLEN - this.state.text.length
     return (
-      <div className="FormWrapper FormWrapper-Condensed activity-form-wrapper">
+      <div className="FormWrapper FormWrapper-Condensed td-status-form">
         {userProfile && (
           <img src={userProfile.photoUrl} alt={userProfile.name} className="ProfilePhoto" />
         )}
-        <form className="Activity activity-form" id="tem_activity" onSubmit={this.onSubmit}>
+        <form className="Activity td-status-form__form" onSubmit={this.onSubmit}>
           <MentionsInput
             className="mentions"
             wrap={1}
@@ -75,7 +75,7 @@ export default class NewActivityForm extends Component {
               id="Form_Share"
               name="Share"
               value="Submit"
-              className="Button Primary"
+              className="Button Primary td-status-form__submit"
               disabled={!this.state.text.length}
             />
           </div>

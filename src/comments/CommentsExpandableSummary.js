@@ -43,10 +43,10 @@ export default class CommentsExpandableSummary extends Component {
   render() {
     const summary = this.getSummaryMessage()
     return (
-      <div className="status__comments">
+      <div className="td-status__comments">
         {summary && (
           <a
-            className="comments__toggle"
+            className="td-status__comments__toggle"
             style={{ cursor: 'pointer' }}
             onClick={this.onClick}
             href={this.props.href}

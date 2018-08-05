@@ -48,9 +48,9 @@
     "url": "^0.11.0"
   },
   "peerDependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "@tomodomo/vanilla-react-utils": "git+https://github.com/TomodomoCo/vanilla-react-utils"
+    "prop-types": "*",
+    "react": "*",
+    "react-dom": "*",
+    "vanilla-react-utils": "*"
   }
 }

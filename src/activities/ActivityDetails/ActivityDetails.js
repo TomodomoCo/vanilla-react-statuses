@@ -87,7 +87,7 @@ export default class ActivityDetails extends Component {
     const userName = this.props.insertUser.name
     return (
       <div className="td-status__details">
-        <div className="td-status__item" data-discussion-id={this.props.discussionID}>
+        <div className="td-status__item td-status__item--primary" data-discussion-id={this.props.discussionID}>
           <div className="td-status__author">
             <img
               src={this.props.insertUser.photoUrl}
@@ -105,8 +105,8 @@ export default class ActivityDetails extends Component {
             <div className="td-status__actions">
               {onChangeCategory &&
                 categories && (
-                  <div class="td-status__action">
-                    <label class="td-status__action-label">Move</label>
+                  <div className="td-status__action">
+                    <label className="td-status__action-label">Move</label>
                     <select
                       name="categories"
                       onChange={this.onChangeCategory}
@@ -121,8 +121,8 @@ export default class ActivityDetails extends Component {
                   </div>
                 )}
               {onDeleteActivity && (
-                <div class="td-status__action">
-                  <label class="td-status__action-label">Manage</label>
+                <div className="td-status__action">
+                  <label className="td-status__action-label">Manage</label>
                   <button onClick={this.onDeleteActivity} className="td-status__delete">
                     Delete
                   </button>

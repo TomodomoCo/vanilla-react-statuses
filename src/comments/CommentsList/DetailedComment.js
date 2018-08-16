@@ -43,10 +43,13 @@ export default class DetailedComment extends PureComponent {
             {stripHtmlTags(this.props.body)}
           </div>
         </div>
-        <div class="td-status__actions">
+        <div className="td-status__actions">
           {this.props.onDeleteComment && (
             <div className="td-status__action">
-              <button onClick={this.onDeleteComment} className="button">&times;</button>
+              <label className="td-status__action-label">Manage</label>
+              <button onClick={this.onDeleteComment} className="button">
+                Delete
+              </button>
             </div>
           )}
         </div>

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import { stripHtmlTags, getUserUrl } from '@tomodomo/vanilla-react-utils'
 import Comments from '../../comments/CommentsExpandableSummary'
 
@@ -52,14 +53,17 @@ export default class ActivityList extends PureComponent {
                 className="ProfilePhoto td-status__photo"
                 alt={discussion.insertUser.name}
               />
-              <a href={getUserUrl(discussion.insertUser.name)} className="td-status__username">{discussion.insertUser.name}</a>
-              &nbsp;posted a&nbsp;
+              <a href={getUserUrl(discussion.insertUser.name)} className="td-status__username">
+                {discussion.insertUser.name}
+              </a>
+              &nbsp;<span className="td-status__separator">·</span>&nbsp;
               <a
                 href={discussion.url}
                 onClick={this.onOpenDiscussion(discussion)}
+                className="td-status__time"
               >
-                status
-              </a>:
+                <time>{distanceInWordsToNow(discussion.dateInserted)} ago</time>
+              </a>
             </div>
             <div className="td-status__content">
               <div className="td-status__text">{stripHtmlTags(discussion.body)}</div>

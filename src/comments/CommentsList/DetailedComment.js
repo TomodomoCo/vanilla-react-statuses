@@ -36,7 +36,11 @@ export default class DetailedComment extends PureComponent {
             className="ProfilePhoto td-status__photo"
             alt={name}
           />
-          <a href={getUserUrl(name)} className="td-status__username">{name}</a>&nbsp;<span className="td-status__separator">·</span>&nbsp;<time>{distanceInWordsToNow(dateInserted)} ago</time>
+          <a href={getUserUrl(name)} className="td-status__username">{name}</a>&nbsp;
+          <span className="td-status__separator">·</span>&nbsp;
+          <span class="td-status__time">
+            <time>{distanceInWordsToNow(dateInserted)} ago</time>
+          </span>
         </div>
         <div className="td-status__content">
           <div className="td-status__text">

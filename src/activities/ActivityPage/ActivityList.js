@@ -55,6 +55,7 @@ export default class ActivityList extends PureComponent {
                   ev.preventDefault()
                   this.props.onOpenDiscussion(discussion.discussionID, discussion.url)
                 }}
+                className="td-status__time"
               >
                 <time>{distanceInWordsToNow(discussion.dateInserted)} ago</time>
               </a>

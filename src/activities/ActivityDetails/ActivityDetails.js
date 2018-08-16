@@ -96,7 +96,9 @@ export default class ActivityDetails extends Component {
             />
             <a href={getUserUrl(userName)} className="td-status__username">{userName}</a>&nbsp;
             <span className="td-status__separator">·</span>&nbsp;
-            <time>{distanceInWordsToNow(this.props.dateInserted)} ago</time>
+            <span class="td-status__time">
+              <time>{distanceInWordsToNow(this.props.dateInserted)} ago</time>
+            </span>
           </div>
           <div className="td-status__content">
             <div className="td-status__text">{stripHtmlTags(this.props.body)}</div>

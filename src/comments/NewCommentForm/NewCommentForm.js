@@ -39,13 +39,16 @@ export default class NewCommentForm extends Component {
           <MentionsInput
             className="mentions"
             wrap={1}
-            rows={2}
+            rows={3}
             cols={5}
             placeholder="Leave a comment"
             maxLength={ACTIVITY_COMMENT_MAXLEN || undefined}
             onChange={this.onChange}
             value={this.state.text}
             markup={'@"__display__"'}
+            displayTransform={(id, display, type) => (
+              '@' + display
+            )}
           >
             {this.props.tagSearch && (
               <Mention

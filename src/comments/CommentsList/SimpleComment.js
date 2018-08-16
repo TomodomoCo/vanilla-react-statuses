@@ -22,7 +22,7 @@ export default class SimpleComment extends PureComponent {
             className="ProfilePhoto sblist__photo"
             alt={name}
           />
-          <a href={getUserUrl(name)}>{name}</a> replied:
+          <a href={getUserUrl(name)} className="td-status__username">{name}</a> replied:
         </div>
         <div className="comment__body">{stripHtmlTags(this.props.body)}</div>
       </div>

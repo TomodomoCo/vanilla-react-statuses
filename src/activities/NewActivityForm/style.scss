@@ -1,0 +1,21 @@
+.td-status-form {
+	.mentions {
+		font-family: Arial, sans-serif;
+		border: 0;
+
+		.mentions__highlighter,
+		textarea {
+			padding: 0.8rem 1rem !important;
+			border-width: 1px !important;
+			border-style: solid !important;
+
+			outline: none !important;
+
+			font-size: 15px !important;
+			line-height: 1.4 !important;
+
+			height: auto !important;
+			min-height: 100px !important;
+		}
+	}
+}

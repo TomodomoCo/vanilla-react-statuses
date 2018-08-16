@@ -32,6 +32,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
+    "node-sass": "^4.9.3",
     "path": "^0.12.7",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
@@ -50,7 +51,6 @@
   "peerDependencies": {
     "prop-types": "*",
     "react": "*",
-    "react-dom": "*",
-    "@tomodomo/vanilla-react-utils": "*"
+    "react-dom": "*"
   }
 }

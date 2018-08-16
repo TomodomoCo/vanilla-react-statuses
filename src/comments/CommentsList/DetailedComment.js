@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
-import { stripHtmlTags, getUserUrl } from 'vanilla-react-utils'
+import { stripHtmlTags, getUserUrl } from '@tomodomo/vanilla-react-utils'
 
 export default class DetailedComment extends PureComponent {
   static propTypes = {
@@ -29,22 +29,25 @@ export default class DetailedComment extends PureComponent {
     const { name } = this.props.insertUser
     const dateInserted = new Date(this.props.dateInserted)
     return (
-      <div className="comment comment--detailed" data-comment-id={this.props.commentID}>
-        <div className="sblist__author">
+      <div>
+        <div className="td-status__author">
           <img
             src={this.props.insertUser.photoUrl}
-            className="ProfilePhoto sblist__photo"
+            className="ProfilePhoto td-status__photo"
             alt={name}
           />
-          <a href={getUserUrl(name)}>{name}</a>&nbsp;<span className="status-header__separator">·</span>&nbsp;<time>{distanceInWordsToNow(dateInserted)} ago</time>
+          <a href={getUserUrl(name)} className="td-status__username">{name}</a>&nbsp;<span className="td-status__separator">·</span>&nbsp;<time>{distanceInWordsToNow(dateInserted)} ago</time>
         </div>
-        <div className="comment__body">{stripHtmlTags(this.props.body)}</div>
+        <div className="td-status__content">
+          <div className="td-status__text">
+            {stripHtmlTags(this.props.body)}
+          </div>
+        </div>
         {this.props.onDeleteComment && (
-          <div className="status__actions comment__actions">
+          <div className="td-status__actions">
             <button onClick={this.onDeleteComment} className="button">&times;</button>
           </div>
         )}
-
       </div>
     )
   }

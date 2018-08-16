@@ -24,7 +24,7 @@ export default class CommentsList extends PureComponent {
     return (
       <ul className="comments">
         {this.props.comments.map(comment => (
-          <li key={comment.commentID} className="sblist__item">
+          <li key={comment.commentID} className="td-status__item" data-comment-id={comment.commentID}>
             <Comment {...comment} onDeleteComment={this.props.yielderOnDeleteComment(comment)} />
           </li>
         ))}

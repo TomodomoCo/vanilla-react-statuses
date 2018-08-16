@@ -52,7 +52,7 @@ export default class ActivityList extends PureComponent {
                 className="ProfilePhoto td-status__photo"
                 alt={discussion.insertUser.name}
               />
-              <a href={getUserUrl(discussion.insertUser.name)}>{discussion.insertUser.name}</a>
+              <a href={getUserUrl(discussion.insertUser.name)} className="td-status__username">{discussion.insertUser.name}</a>
               &nbsp;posted a&nbsp;
               <a
                 href={discussion.url}

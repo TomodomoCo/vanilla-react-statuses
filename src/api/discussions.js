@@ -1,4 +1,11 @@
-import { truncateText, fetchJson, postData, METHODS, getProfile, getUserAccess } from '@tomodomo/vanilla-react-utils'
+import {
+  truncateText,
+  fetchJson,
+  postData,
+  METHODS,
+  getProfile,
+  getUserAccess,
+} from '@tomodomo/vanilla-react-utils'
 
 const { ACTIVITY_CATEGORY_ID } = window.tomodomo.config
 

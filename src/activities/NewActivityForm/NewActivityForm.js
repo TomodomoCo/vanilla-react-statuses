@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { MentionsInput, Mention } from 'react-mentions'
-import './styles.scss'
+import './style.scss'
 
 const { ACTIVITY_POST_MAXLEN } = window.tomodomo.config
 
@@ -34,7 +34,7 @@ export default class NewActivityForm extends Component {
     return (
       <div className="FormWrapper FormWrapper-Condensed td-status-form">
         {userProfile && (
-          <img src={userProfile.photoUrl} alt={userProfile.name} className="ProfilePhoto" />
+          <img src={userProfile.photoUrl} alt={userProfile.name} className="ProfilePhoto td-status-form__photo" />
         )}
         <form className="Activity td-status-form__form" onSubmit={this.onSubmit}>
           <MentionsInput
@@ -64,20 +64,22 @@ export default class NewActivityForm extends Component {
               />
             )}
           </MentionsInput>
-          {!!ACTIVITY_POST_MAXLEN && charsCountdown !== ACTIVITY_POST_MAXLEN && (
-            <div className="chars-countdown">
-              {charsCountdown} characters left
+          <div className="td-status-form__footer">
+            <div className="td-status-form__count">
+            {!!ACTIVITY_POST_MAXLEN && charsCountdown !== ACTIVITY_POST_MAXLEN && (
+                <span>{charsCountdown} characters left</span>
+            )}
             </div>
-          )}
-          <div className="Buttons">
-            <input
-              type="submit"
-              id="Form_Share"
-              name="Share"
-              value="Submit"
-              className="Button Primary td-status-form__submit"
-              disabled={!this.state.text.length}
-            />
+            <div className="td-status-form__actions">
+              <input
+                type="submit"
+                id="Form_Share"
+                name="Share"
+                value="Submit"
+                className="Button Primary td-status-form__submit"
+                disabled={!this.state.text.length}
+              />
+            </div>
           </div>
         </form>
       </div>

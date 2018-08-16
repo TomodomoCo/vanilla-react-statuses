@@ -87,14 +87,14 @@ export default class ActivityDetails extends Component {
     const userName = this.props.insertUser.name
     return (
       <div className="td-status__details">
-        <div className="td-status__header" data-discussion-id={this.props.discussionID}>
+        <div className="td-status__item" data-discussion-id={this.props.discussionID}>
           <div className="td-status__author">
             <img
               src={this.props.insertUser.photoUrl}
               className="ProfilePhoto td-status__photo"
               alt={userName}
             />
-            <a href={getUserUrl(userName)}>{userName}</a>&nbsp;
+            <a href={getUserUrl(userName)} className="td-status__username">{userName}</a>&nbsp;
             <span className="td-status__separator">·</span>&nbsp;
             <time>{distanceInWordsToNow(this.props.dateInserted)} ago</time>
           </div>

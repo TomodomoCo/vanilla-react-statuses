@@ -106,7 +106,7 @@ export default class ActivityDetails extends Component {
               {onChangeCategory &&
                 categories && (
                   <div class="td-status__action">
-                    <label class="td-status__action-label">Move:</label>
+                    <label class="td-status__action-label">Move</label>
                     <select
                       name="categories"
                       onChange={this.onChangeCategory}
@@ -122,6 +122,7 @@ export default class ActivityDetails extends Component {
                 )}
               {onDeleteActivity && (
                 <div class="td-status__action">
+                  <label class="td-status__action-label">Manage</label>
                   <button onClick={this.onDeleteActivity} className="td-status__delete">
                     Delete
                   </button>

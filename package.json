@@ -59,6 +59,7 @@
   "peerDependencies": {
     "prop-types": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "@tomodomo/vanilla-react-utils": "*"
   }
 }

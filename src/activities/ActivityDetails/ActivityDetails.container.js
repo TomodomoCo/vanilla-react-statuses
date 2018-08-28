@@ -52,9 +52,9 @@ export default class ActivityDetailsContainer extends Component {
   onChangeCategory = categoryID => updateDiscussionById(this.props.discussionID, { categoryID })
 
   componentWillMount = () => {
-    const { discussion, isLegacy } = this.props // if present => legacy
+    const { discussion, isLegacy } = this.props
     if (!isLegacy) {
-      this.fetchActivityUpdates().catch(console.error)
+      this.fetchActivityUpdates(this.props.discussionID).catch(console.error)
       this.fetchPermissions().catch(console.error)
       this.fetchProfile().catch(console.error)
       this.fetchCategories().catch(console.error)
@@ -64,8 +64,8 @@ export default class ActivityDetailsContainer extends Component {
   }
 
   componentWillReceiveProps = nextProps => {
-    if (!this.props.isLegacy) {
-      this.fetchActivityUpdates(nextProps).catch(console.error)
+    if (!this.props.isLegacy && this.props.discussionID !== nextProps.discussionID) {
+      this.fetchActivityUpdates(nextProps.discussionID).catch(console.error)
     } else {
       this.setState({ discussion: nextProps.discussion })
     }

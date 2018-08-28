@@ -38,7 +38,7 @@ export default class DetailedComment extends PureComponent {
           />
           <a href={getUserUrl(name)} className="td-status__username">{name}</a>&nbsp;
           <span className="td-status__separator">·</span>&nbsp;
-          <span class="td-status__time">
+          <span className="td-status__time">
             <time>{distanceInWordsToNow(dateInserted)} ago</time>
           </span>
         </div>

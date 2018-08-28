@@ -96,7 +96,7 @@ export default class ActivityDetails extends Component {
             />
             <a href={getUserUrl(userName)} className="td-status__username">{userName}</a>&nbsp;
             <span className="td-status__separator">·</span>&nbsp;
-            <span class="td-status__time">
+            <span className="td-status__time">
               <time>{distanceInWordsToNow(this.props.dateInserted)} ago</time>
             </span>
           </div>
@@ -138,7 +138,8 @@ export default class ActivityDetails extends Component {
           countComments={this.props.countComments}
           showDetails
           updateTimestamp={this.state.updateTimestamp}
-          legacyCommentList={this.props.comments}
+          commentList={this.props.comments}
+          isLegacy={isLegacy}
         />
         {!isLegacy && (
           <NewCommentForm

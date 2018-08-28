@@ -11,7 +11,8 @@ export default class CommentsContainer extends Component {
     limitCount: PropTypes.number,
     showDetails: PropTypes.bool,
     updateTimestamp: PropTypes.number,
-    legacyCommentList: PropTypes.arrayOf(PropTypes.shape()),
+    commentList: PropTypes.arrayOf(PropTypes.shape()),
+    isLegacy: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -25,6 +26,7 @@ export default class CommentsContainer extends Component {
   }
 
   fetchPermissions = async () => {
+    const up = await getModAccessOnActivities()
     this.setState({ userPermissions: await getModAccessOnActivities() })
   }
 
@@ -48,18 +50,20 @@ export default class CommentsContainer extends Component {
   }
 
   componentWillMount = () => {
-    if (this.props.legacyCommentList) {
-      this.setState({ comments: this.props.legacyCommentList })
+    if (this.props.commentList) {
+      this.setState({ comments: this.props.commentList })
     } else {
       this.fetchComments(this.props).catch(console.error)
+    }
+    if (!this.props.isLegacy) {
       this.fetchPermissions().catch(console.error)
       this.fetchProfile().catch(console.error)
     }
   }
 
   componentWillReceiveProps = nextProps => {
-    if (nextProps.legacyCommentList) {
-      this.setState({ comments: nextProps.legacyCommentList })
+    if (nextProps.isLegacy && nextProps.commentList) {
+      this.setState({ comments: nextProps.commentList })
     } else {
       this.fetchComments(nextProps)
     }

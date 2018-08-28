@@ -51,7 +51,7 @@ export default class DetailedComment extends PureComponent {
           {this.props.onDeleteComment && (
             <div className="td-status__action">
               <label className="td-status__action-label">Manage</label>
-              <button onClick={this.onDeleteComment} className="button">
+              <button onClick={this.onDeleteComment} className="td-status__delete">
                 Delete
               </button>
             </div>

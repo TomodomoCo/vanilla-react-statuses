@@ -27,6 +27,7 @@ export default class ActivityPage extends Component {
     const legacyDiscussionID = Url.parse(window.location.href, true).query.discussionID
     const standardDiscussionID = this.props.discussionId
     const discussionID = standardDiscussionID || legacyDiscussionID
+
     // if we have a discussionID, we must show the modal
     this.setState({ discussionID })
     this.isLegacy = legacyDiscussionID && !standardDiscussionID

@@ -5,6 +5,8 @@ import { deleteCommentById, getCommentsByActivityId } from '../../api/comments'
 import { getModAccessOnActivities } from '../../api/discussions'
 import CommentsList from './CommentsList'
 
+const { ALLOW_SELF_DELETE } = window.tomodomo.config
+
 export default class CommentsContainer extends Component {
   static propTypes = {
     discussionID: PropTypes.number.isRequired,
@@ -78,7 +80,7 @@ export default class CommentsContainer extends Component {
         showDetails={this.props.showDetails}
         yielderOnDeleteComment={comment => (
           (userPermissions && userPermissions['comments.delete']) ||
-          (userProfile && userProfile.userID === comment.insertUser.userID)
+          (userProfile && userProfile.userID === comment.insertUser.userID && ALLOW_SELF_DELETE)
             ? this.onDeleteComment
             : null
         )}

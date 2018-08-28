@@ -10,6 +10,8 @@ import {
 } from '../../api/discussions'
 import { getCommentsByActivityId } from '../../api/comments'
 
+const { ALLOW_SELF_DELETE } = window.tomodomo.config
+
 import ActivityDetails from './ActivityDetails'
 
 export default class ActivityDetailsContainer extends Component {
@@ -83,7 +85,7 @@ export default class ActivityDetailsContainer extends Component {
           ...discussion,
           onDeleteActivity:
             canManageDiscussions ||
-            (userProfile && userProfile.userID === discussion.insertUser.userID)
+            (userProfile && userProfile.userID === discussion.insertUser.userID && ALLOW_SELF_DELETE)
               ? this.onDeleteActivity
               : null,
           onChangeCategory: canManageDiscussions ? this.onChangeCategory : null,

@@ -31,7 +31,7 @@ export default class NewCommentForm extends Component {
     const { userProfile } = this.props
     const charsCountdown = ACTIVITY_COMMENT_MAXLEN - this.state.text.length
     return (
-      <div className="FormWrapper FormWrapper-Condensed td-status-form td-status-form--comment">
+      <div className="FormWrapper td-status-form td-status-form--comment">
         {userProfile && (
           <img src={userProfile.photoUrl} alt={userProfile.name} className="ProfilePhoto td-status-form__photo" />
         )}

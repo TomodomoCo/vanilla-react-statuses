@@ -13,6 +13,7 @@ import { getCommentsByActivityId } from '../../api/comments'
 const { ALLOW_SELF_DELETE } = window.tomodomo.config
 
 import ActivityDetails from './ActivityDetails'
+import ModTools from './DiscussionActions'
 
 export default class ActivityDetailsContainer extends Component {
   static propTypes = {
@@ -79,6 +80,22 @@ export default class ActivityDetailsContainer extends Component {
     const { discussion, userPermissions, userProfile, categories } = this.state
     const canManageDiscussions = userPermissions && userPermissions['discussions.manage']
     if (!discussion) return <Spinner />
+
+    const actionsElement = (
+      <ModTools
+        onDeleteActivity={
+          canManageDiscussions ||
+          (userProfile && userProfile.userID === discussion.insertUser.userID)
+            ? this.onDeleteActivity
+            : null
+        }
+        onChangeCategory={canManageDiscussions ? this.onChangeCategory : null}
+        onCloseDiscussion={this.props.onCloseDiscussion}
+        discussionCategoryID={discussion.discussionID}
+        categories={categories}
+      />
+    )
+
     return (
       <ActivityDetails
         {...{
@@ -90,7 +107,7 @@ export default class ActivityDetailsContainer extends Component {
               : null,
           onChangeCategory: canManageDiscussions ? this.onChangeCategory : null,
           onCloseDiscussion: this.props.onCloseDiscussion,
-          categories,
+          actionsElement,
         }}
       />
     )

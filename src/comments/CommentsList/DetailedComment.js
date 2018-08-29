@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import { stripHtmlTags, getUserUrl } from '@tomodomo/vanilla-react-utils'
+import ModToolsWrapper from '../../common/ModToolsWrapper'
+
 
 export default class DetailedComment extends PureComponent {
   static propTypes = {
@@ -28,6 +30,13 @@ export default class DetailedComment extends PureComponent {
   render() {
     const { name } = this.props.insertUser
     const dateInserted = new Date(this.props.dateInserted)
+
+    const modToolsElement = this.props.onDeleteComment && (
+      <div className="status__actions comment__actions">
+        <button onClick={this.onDeleteComment} className="button">&times;</button>
+      </div>
+    )
+
     return (
       <div>
         <div className="td-status__author">
@@ -47,16 +56,12 @@ export default class DetailedComment extends PureComponent {
             {stripHtmlTags(this.props.body)}
           </div>
         </div>
-        <div className="td-status__actions">
-          {this.props.onDeleteComment && (
-            <div className="td-status__action">
-              <label className="td-status__action-label">Manage</label>
-              <button onClick={this.onDeleteComment} className="td-status__delete">
-                Delete
-              </button>
-            </div>
-          )}
-        </div>
+        {this.props.onDeleteComment && (
+          <div className="td-status__actions">
+            <button onClick={this.onDeleteComment} className="td-status__delete">&times;</button>
+          </div>
+        )}
+        {modToolsElement && <ModToolsWrapper modToolsElement={modToolsElement} />}
       </div>
     )
   }

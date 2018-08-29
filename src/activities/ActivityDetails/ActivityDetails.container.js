@@ -97,12 +97,6 @@ export default class ActivityDetailsContainer extends Component {
       <ActivityDetails
         {...{
           ...discussion,
-          onDeleteActivity:
-            canManageDiscussions ||
-            (userProfile && userProfile.userID === discussion.insertUser.userID && ALLOW_SELF_DELETE)
-              ? this.onDeleteActivity
-              : null,
-          onChangeCategory: canManageDiscussions ? this.onChangeCategory : null,
           onCloseDiscussion: this.props.onCloseDiscussion,
           actionsElement,
         }}

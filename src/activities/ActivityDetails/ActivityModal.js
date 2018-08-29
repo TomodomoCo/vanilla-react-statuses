@@ -9,6 +9,13 @@ export default class ActivityModal extends PureComponent {
     onCloseDiscussion: PropTypes.func.isRequired,
   }
 
+  // always update when the window is closed.
+  // This update may not be needed, but it's better UX, because we already create some expectations
+  // of real-time behaviour with the reactivity to user's own actions
+  // Plus, it's a shortcut for updating the number of comments in the list
+  // (in case the user added or deleted a comment in the activity)
+  onRequestClose = () => this.props.onCloseDiscussion({ forceUpdate: true })
+
   render() {
     const { onCloseDiscussion, discussionID } = this.props
     return (
@@ -17,10 +24,10 @@ export default class ActivityModal extends PureComponent {
         className="td-status__modal"
         overlayClassName="td-status__modal__overlay"
         contentLabel="Status Details"
-        onRequestClose={onCloseDiscussion}
+        onRequestClose={this.onRequestClose}
         ariaHideApp={false}
       >
-        <button onClick={onCloseDiscussion} style={{ float: 'right' }}>
+        <button onClick={this.onRequestClose} style={{ float: 'right' }}>
           x
         </button>
         <ActivityDetails {...this.props} />

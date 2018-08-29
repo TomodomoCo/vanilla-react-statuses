@@ -85,7 +85,7 @@ export default class ActivityDetailsContainer extends Component {
       <ModTools
         onDeleteActivity={
           canManageDiscussions ||
-          (userProfile && userProfile.userID === discussion.insertUser.userID)
+          (userProfile && userProfile.userID === discussion.insertUserID)
             ? this.onDeleteActivity
             : null
         }

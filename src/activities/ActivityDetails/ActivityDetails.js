@@ -47,29 +47,6 @@ export default class ActivityDetails extends Component {
           <div className="td-status__content">
             <div className="td-status__text">{stripHtmlTags(this.props.body)}</div>
           </div>
-          {(onChangeCategory || onDeleteActivity) && (
-            <div className="status__actions activity__actions">
-              {onChangeCategory &&
-              categories && (
-                <select
-                  name="categories"
-                  onChange={this.onChangeCategory}
-                  defaultValue={this.props.categoryID}
-                >
-                  {this.flattenCategories(categories).map(({ categoryID, name, depth }) => (
-                    <option value={categoryID} key={categoryID}>
-                      {'- '.repeat(depth - 1) + name}
-                    </option>
-                  ))}
-                </select>
-              )}
-              {onDeleteActivity && (
-                <button onClick={this.onDeleteActivity} className="button">
-                  &times;
-                </button>
-              )}
-            </div>
-          )}
           {this.props.actionsElement}
         </div>
         <Comments

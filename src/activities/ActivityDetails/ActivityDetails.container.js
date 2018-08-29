@@ -31,8 +31,7 @@ export default class ActivityDetailsContainer extends Component {
     categories: null,
   }
 
-  fetchActivityUpdates = async props => {
-    const { discussionID } = props || this.props
+  fetchActivityUpdates = async discussionID => {
     const discussion = await getActivityById(discussionID)
     discussion.comments = await getCommentsByActivityId(discussionID)
     this.setState({ discussion })
@@ -57,8 +56,7 @@ export default class ActivityDetailsContainer extends Component {
   componentWillMount = () => {
     const { discussion, isLegacy } = this.props
     if (!isLegacy) {
-      //this.fetchActivityUpdates(this.props.discussionID).catch(console.error)
-      this.fetchActivityUpdates({ discussionID: this.props.discussionID }).catch(console.error)
+      this.fetchActivityUpdates(this.props.discussionID).catch(console.error)
       this.fetchPermissions().catch(console.error)
       this.fetchProfile().catch(console.error)
       this.fetchCategories().catch(console.error)
@@ -69,8 +67,7 @@ export default class ActivityDetailsContainer extends Component {
 
   componentWillReceiveProps = nextProps => {
     if (!this.props.isLegacy && this.props.discussionID !== nextProps.discussionID) {
-      //this.fetchActivityUpdates(nextProps.discussionID).catch(console.error)
-      this.fetchActivityUpdates({ discussionID: nextProps.discussionID }).catch(console.error)
+      this.fetchActivityUpdates(nextProps.discussionID).catch(console.error)
     } else {
       this.setState({ discussion: nextProps.discussion })
     }

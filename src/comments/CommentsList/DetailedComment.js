@@ -32,9 +32,9 @@ export default class DetailedComment extends PureComponent {
     const dateInserted = new Date(this.props.dateInserted)
 
     const modToolsElement = this.props.onDeleteComment && (
-      <div className="status__actions comment__actions">
-        <button onClick={this.onDeleteComment} className="button">&times;</button>
-      </div>
+      <li role="presentation" className="no-icon">
+        <a href="javascript:;" role="menuitem" className="dropdown-menu-link dropdown-menu-link-edit" onClick={this.onDeleteComment}>Delete Comment</a>
+      </li>
     )
 
     return (
@@ -56,11 +56,6 @@ export default class DetailedComment extends PureComponent {
             {stripHtmlTags(this.props.body)}
           </div>
         </div>
-        {this.props.onDeleteComment && (
-          <div className="td-status__actions">
-            <button onClick={this.onDeleteComment} className="td-status__delete">&times;</button>
-          </div>
-        )}
         {modToolsElement && <ModToolsWrapper modToolsElement={modToolsElement} />}
       </div>
     )

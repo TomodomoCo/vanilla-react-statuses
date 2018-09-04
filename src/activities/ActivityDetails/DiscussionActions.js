@@ -73,22 +73,27 @@ export default class DiscussionActions extends PureComponent {
       <Fragment>
         {onChangeCategory &&
         categories && (
-          <select
-            name="categories"
-            onChange={this.onChangeCategory}
-            defaultValue={this.props.discussionCategoryID}
-          >
-            {this.flattenCategories(categories).map(({ categoryID, name, depth }) => (
-              <option value={categoryID} key={categoryID}>
-                {'- '.repeat(depth - 1) + name}
-              </option>
-            ))}
-          </select>
+          <li role="presentation" className="no-icon">
+            <div className="status__move">
+              <label>Move Status</label>
+              <select
+                name="categories"
+                onChange={this.onChangeCategory}
+                defaultValue={this.props.discussionCategoryID}
+              >
+                {this.flattenCategories(categories).map(({ categoryID, name, depth }) => (
+                  <option value={categoryID} key={categoryID}>
+                    {'- '.repeat(depth - 1) + name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </li>
         )}
         {onDeleteActivity && (
-          <button onClick={this.onDeleteActivity} className="button">
-            &times;
-          </button>
+          <li role="presentation" className="no-icon">
+            <a href="javascript:;" role="menuitem" className="dropdown-menu-link dropdown-menu-link-edit" onClick={this.onDeleteActivity}>Delete Status</a>
+          </li>
         )}
       </Fragment>
     )

@@ -27,9 +27,7 @@ export default class ActivityModal extends PureComponent {
         onRequestClose={this.onRequestClose}
         ariaHideApp={false}
       >
-        <button onClick={this.onRequestClose} style={{ float: 'right' }}>
-          x
-        </button>
+        <button onClick={this.onRequestClose} style={{ float: 'right' }}>×</button>
         <ActivityDetails {...this.props} />
       </Modal>
     )

@@ -30,7 +30,7 @@ export default class ModToolsWrapper extends Component {
     return (
       // selector '.Options .SpFlyoutHandle' is styled as a gear in vanilla's css
       <div className="status__actions actions Options">
-        <span className={`ToggleFlyout OptionsMenu ${isExpanded ? 'Open' : ''}`}>
+        <span className={`OptionsMenu ${isExpanded ? 'Open' : ''}`}>
           <span className="Button-Options" tabindex="0" role="button" aria-haspopup="true" aria-expanded={ isExpanded }>
             <span className="OptionsTitle" title="Options" />
             <span
@@ -45,8 +45,7 @@ export default class ModToolsWrapper extends Component {
             className="Flyout MenuItems list-reset"
             role="menu"
             aria-labelledby="dropdown"
-            aria-hidden="false"
-            style={{ display: isExpanded ? 'block' : 'none' }}
+            aria-hidden={ !isExpanded }
             ref={element => {
               this.popoverElement = element
             }}

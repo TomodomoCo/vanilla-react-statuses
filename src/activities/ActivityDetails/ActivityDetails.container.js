@@ -13,6 +13,7 @@ import { getCommentsByActivityId } from '../../api/comments'
 const { ALLOW_SELF_DELETE } = window.tomodomo.config
 
 import ActivityDetails from './ActivityDetails'
+import ModTools from './DiscussionActions'
 
 export default class ActivityDetailsContainer extends Component {
   static propTypes = {
@@ -30,8 +31,7 @@ export default class ActivityDetailsContainer extends Component {
     categories: null,
   }
 
-  fetchActivityUpdates = async props => {
-    const { discussionID } = props || this.props
+  fetchActivityUpdates = async discussionID => {
     const discussion = await getActivityById(discussionID)
     discussion.comments = await getCommentsByActivityId(discussionID)
     this.setState({ discussion })
@@ -56,8 +56,7 @@ export default class ActivityDetailsContainer extends Component {
   componentWillMount = () => {
     const { discussion, isLegacy } = this.props
     if (!isLegacy) {
-      //this.fetchActivityUpdates(this.props.discussionID).catch(console.error)
-      this.fetchActivityUpdates({ discussionID: this.props.discussionID }).catch(console.error)
+      this.fetchActivityUpdates(this.props.discussionID).catch(console.error)
       this.fetchPermissions().catch(console.error)
       this.fetchProfile().catch(console.error)
       this.fetchCategories().catch(console.error)
@@ -68,8 +67,7 @@ export default class ActivityDetailsContainer extends Component {
 
   componentWillReceiveProps = nextProps => {
     if (!this.props.isLegacy && this.props.discussionID !== nextProps.discussionID) {
-      //this.fetchActivityUpdates(nextProps.discussionID).catch(console.error)
-      this.fetchActivityUpdates({ discussionID: nextProps.discussionID }).catch(console.error)
+      this.fetchActivityUpdates(nextProps.discussionID).catch(console.error)
     } else {
       this.setState({ discussion: nextProps.discussion })
     }
@@ -79,18 +77,28 @@ export default class ActivityDetailsContainer extends Component {
     const { discussion, userPermissions, userProfile, categories } = this.state
     const canManageDiscussions = userPermissions && userPermissions['discussions.manage']
     if (!discussion) return <Spinner />
+
+    const actionsElement = (
+      <ModTools
+        onDeleteActivity={
+          canManageDiscussions ||
+          (userProfile && userProfile.userID === discussion.insertUserID && ALLOW_SELF_DELETE)
+            ? this.onDeleteActivity
+            : null
+        }
+        onChangeCategory={canManageDiscussions ? this.onChangeCategory : null}
+        onCloseDiscussion={this.props.onCloseDiscussion}
+        discussionCategoryID={discussion.discussionID}
+        categories={categories}
+      />
+    )
+
     return (
       <ActivityDetails
         {...{
           ...discussion,
-          onDeleteActivity:
-            canManageDiscussions ||
-            (userProfile && userProfile.userID === discussion.insertUser.userID && ALLOW_SELF_DELETE)
-              ? this.onDeleteActivity
-              : null,
-          onChangeCategory: canManageDiscussions ? this.onChangeCategory : null,
           onCloseDiscussion: this.props.onCloseDiscussion,
-          categories,
+          actionsElement,
         }}
       />
     )

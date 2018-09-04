@@ -16,74 +16,18 @@ export default class ActivityDetails extends Component {
       name: PropTypes.string.isRequired,
       photoUrl: PropTypes.string.isRequired,
     }),
-    categoryID: PropTypes.number.isRequired,
-    onDeleteActivity: PropTypes.func,
-    onChangeCategory: PropTypes.func,
-    onCloseDiscussion: PropTypes.func.isRequired,
-    categories: PropTypes.arrayOf(
-      PropTypes.shape({
-        categoryID: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        children: PropTypes.array,
-      })
-    ),
+    // categoryID: PropTypes.number.isRequired,
     isLegacy: PropTypes.bool,
     comments: PropTypes.arrayOf(PropTypes.shape()), // only for legacy activities
+    actionsElement: PropTypes.element,
   }
 
   state = {
     updateTimestamp: 0,
   }
 
-  onDeleteActivity = async () => {
-    if (window.confirm('Are you sure you want to delete this discussion?')) {
-      try {
-        await this.props.onDeleteActivity()
-        this.props.onCloseDiscussion({ forceUpdate: true })
-      } catch (err) {
-        alert(`Can't delete this discussion:\n${err.message}`)
-      }
-    }
-  }
-
-  onChangeCategory = async ev => {
-    if (window.confirm('Are you sure you want to change the category of this discussion?')) {
-      try {
-        await this.props.onChangeCategory(ev.target.value)
-        this.props.onCloseDiscussion({ forceUpdate: true })
-      } catch (err) {
-        alert(`Can't change the category of this discussion:\n${err.message}`)
-      }
-    }
-  }
-
-  /**
-   * A bit of recursive magic to help displaying the categories.
-   * They can be nested, we need them in a flat array
-   * @param {Array|Object} ctg one or more categories
-   * @returns {Array|Object}
-   */
-  flattenCategories = ctg => {
-    if (Array.isArray(ctg)) {
-      // this is flattening arrays (produced by children processing, below)
-      return ctg.reduce((accu, crt) => accu.concat(this.flattenCategories(crt)), [])
-    }
-    const simplifiedCategory = {
-      categoryID: ctg.categoryID,
-      name: ctg.name,
-      depth: ctg.depth,
-    }
-
-    // process any children (and grand-grand-...-children)
-    const { children } = ctg
-    if (children && children.length) {
-      return this.flattenCategories([simplifiedCategory].concat(this.flattenCategories(children)))
-    }
-    return simplifiedCategory // this is the useful part of the category
-  }
-
   render() {
-    const { onDeleteActivity, onChangeCategory, categories, isLegacy } = this.props
+    const { isLegacy } = this.props
     const userName = this.props.insertUser.name
     return (
       <div className="td-status__details">
@@ -103,35 +47,7 @@ export default class ActivityDetails extends Component {
           <div className="td-status__content">
             <div className="td-status__text">{stripHtmlTags(this.props.body)}</div>
           </div>
-          {(onChangeCategory || onDeleteActivity) && (
-            <div className="td-status__actions">
-              {onChangeCategory &&
-                categories && (
-                  <div className="td-status__action">
-                    <label className="td-status__action-label">Move</label>
-                    <select
-                      name="categories"
-                      onChange={this.onChangeCategory}
-                      defaultValue={this.props.categoryID}
-                    >
-                      {this.flattenCategories(categories).map(({ categoryID, name, depth }) => (
-                        <option value={categoryID} key={categoryID}>
-                          {'- '.repeat(depth - 1) + name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-              {onDeleteActivity && (
-                <div className="td-status__action">
-                  <label className="td-status__action-label">Manage</label>
-                  <button onClick={this.onDeleteActivity} className="td-status__delete">
-                    Delete
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
+          {this.props.actionsElement}
         </div>
         <Comments
           discussionID={this.props.discussionID}

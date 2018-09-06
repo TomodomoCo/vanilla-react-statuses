@@ -32,7 +32,9 @@ export default class ActivityDetailsContainer extends Component {
   }
 
   fetchActivityUpdates = async discussionID => {
+    if (!discussionID) return
     const discussion = await getActivityById(discussionID)
+    if (!discussion) return
     discussion.comments = await getCommentsByActivityId(discussionID)
     this.setState({ discussion })
   }
@@ -66,8 +68,10 @@ export default class ActivityDetailsContainer extends Component {
   }
 
   componentWillReceiveProps = nextProps => {
-    if (!this.props.isLegacy && this.props.discussionID !== nextProps.discussionID) {
-      this.fetchActivityUpdates(nextProps.discussionID).catch(console.error)
+    if (!this.props.isLegacy) {
+      if (this.props.discussionID !== nextProps.discussionID) {
+        this.fetchActivityUpdates(nextProps.discussionID).catch(console.error)
+      }
     } else {
       this.setState({ discussion: nextProps.discussion })
     }

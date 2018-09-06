@@ -29,7 +29,6 @@ export default class DetailedComment extends PureComponent {
 
   render() {
     const { name } = this.props.insertUser
-    const dateInserted = new Date(this.props.dateInserted)
 
     const modToolsElement = this.props.onDeleteComment && (
       <li role="presentation" className="no-icon">
@@ -48,7 +47,7 @@ export default class DetailedComment extends PureComponent {
           <a href={getUserUrl(name)} className="td-status__username">{name}</a>&nbsp;
           <span className="td-status__separator">·</span>&nbsp;
           <span className="td-status__time">
-            <time>{distanceInWordsToNow(dateInserted)} ago</time>
+            <time>{distanceInWordsToNow(this.props.dateInserted)} ago</time>
           </span>
         </div>
         <div className="td-status__content">

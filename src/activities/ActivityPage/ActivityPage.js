@@ -70,7 +70,6 @@ export default class ActivityPage extends Component {
   }
 
   onOpenDiscussion = (discussionID, href) => {
-    this.setState({ discussionID })
     // if `href` is missing, we're on a legacy page and we need to compute the url
     let nextHref = href
     if (!nextHref) {
@@ -78,8 +77,10 @@ export default class ActivityPage extends Component {
       delete crtUrl.search // if exists, it overwrites query
       crtUrl.query.discussionID = discussionID
       nextHref = Url.format(crtUrl)
+      this.isLegacy = true
     }
     window.history.pushState({ discussionID }, ACTIVITY_LABEL, nextHref)
+    this.setState({ discussionID })
   }
 
   onPostActivity = () => {

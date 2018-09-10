@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Url from 'url'
-import ActivityListContainer from '../common/ActivityList.container'
+import ActivityListContainer from './ActivityList.container'
 import ActivityList from './ActivityList'
 import ActivityDetails from '../ActivityDetails'
 import { addHistoryObserver } from '../common/browserHistory'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NewActivityForm from '../NewActivityForm'
-import ActivityListContainer from '../common/ActivityList.container'
-import ActivityList from '../ActivityWidget/ActivityList'
+import ActivityListContainer from './ActivityList.container'
+import ActivityList from './ActivityList'
 import ActivityDetails from '../ActivityDetails'
 import { addHistoryObserver } from '../common/browserHistory'
 

@@ -1,3 +1,4 @@
+// TODO: this was a common container for page and widget, now it should be simplified
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Spinner from 'react-tiny-spin'

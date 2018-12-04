@@ -26,6 +26,7 @@ export default class ActivityList extends PureComponent {
           name: PropTypes.string.isRequired,
           photoUrl: PropTypes.string.isRequired,
         }),
+        isLegacy: PropTypes.bool,
       })
     ).isRequired,
     onOpenDiscussion: PropTypes.func,
@@ -67,13 +68,15 @@ export default class ActivityList extends PureComponent {
             </div>
             <div className="td-status__content">
               <div className="td-status__text">{stripHtmlTags(discussion.body)}</div>
-              <Comments
-                discussionID={discussion.discussionID}
-                countComments={discussion.countComments}
-                limitCount={LIMIT_ACTIVITY_COMMENTS}
-                onClick={this.onOpenDiscussion(discussion)}
-              />
-            </div>
+                {!discussion.isLegacy && (
+                  <Comments
+                    discussionID={discussion.discussionID}
+                    countComments={discussion.countComments}
+                    limitCount={LIMIT_ACTIVITY_COMMENTS}
+                    onClick={this.onOpenDiscussion(discussion)}
+                  />
+                )}
+              </div>
           </li>
         ))}
       </ul>
